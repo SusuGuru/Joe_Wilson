@@ -1,69 +1,115 @@
-import { Link } from "react-router-dom";
-
-const stats = [
-  { icon: "ri-music-2-line", value: "12+", label: "Years Experience" },
-  { icon: "ri-album-line", value: "8", label: "Albums Released" },
-  { icon: "ri-mic-line", value: "200+", label: "Live Performances" },
+const services = [
+  {
+    icon: "ri-mic-2-line",
+    title: "RECORDING",
+    text: "Lorem ipsum dolor sit amet, nibh ut lorem commodo nulla facilisis adipiscing vehicula dui dictum varius ut.",
+  },
+  {
+    icon: "ri-equalizer-2-line",
+    title: "MIXING",
+    text: "Lorem ipsum dolor sit amet, nibh ut lorem commodo nulla facilisis adipiscing vehicula dui dictum varius ut.",
+  },
+  {
+    icon: "ri-headphone-line",
+    title: "MASTERING",
+    text: "Lorem ipsum dolor sit amet, nibh ut lorem commodo nulla facilisis adipiscing vehicula dui dictum varius ut.",
+  },
 ];
 
 export default function BioSection() {
   return (
-    <section className="bg-white py-14 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-        {/* Left: Photo */}
-        <div className="w-full">
-          <div className="w-full h-[340px] md:h-[420px] overflow-hidden">
-            <img
-              src="https://storage.readdy-site.link/project_files/c0c1db3d-22db-46b5-85e9-428db5f1168e/b505d7f1-a2cb-4b31-94d3-6f633474031c_871badd755a5afb1a73b6976ceb11bc693cce248.jpg?v=9b1cc5aeb513872a2a091ef6b7fb7e81"
-              alt="Joseph Wilson"
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-        </div>
-
-        {/* Right: Bio */}
-        <div className="flex flex-col justify-start">
-          <p className="text-[#1ab8e8] text-xs font-bold tracking-widest uppercase mb-1">
+    <section className="bg-white">
+      {/* Main Bio Row — text first on mobile, then photo (order reversed on md) */}
+      <div className="flex flex-col md:grid md:grid-cols-2">
+        {/* Right: Bio content — rendered first on mobile */}
+        <div
+          className="flex flex-col justify-center bg-white order-1 md:order-2 px-6 py-10 md:py-0"
+          style={{ padding: "clamp(28px,5vw,72px)" }}
+        >
+          <p
+            className="font-inter font-bold uppercase tracking-[0.18em] mb-2"
+            style={{ fontSize: 11, color: "#077DA7" }}
+          >
             I Am
           </p>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 leading-tight">
+          <h2
+            className="font-inter font-black uppercase leading-[1] mb-4"
+            style={{ fontSize: "clamp(26px,4vw,52px)", color: "#111" }}
+          >
             Joseph Wilson
           </h2>
-          <p className="text-gray-500 text-sm leading-relaxed mb-3">
-            Joseph Wilson is a world-renowned bassist, composer, and music educator with over 12 years of professional experience. Born and raised in New York City, Joseph discovered his passion for music at the age of seven, picking up his first bass guitar and never looking back.
+          <p
+            className="font-inter leading-relaxed mb-4"
+            style={{ fontSize: "clamp(12px,0.95vw,13px)", color: "#6B7280" }}
+          >
+            Joseph Wilson is a UK-based bass guitarist, music director, and producer known for his deep groove, musical sensitivity, and commitment to excellence in gospel and live music. With years of experience across church platforms, live events, and studio sessions, he has developed a sound that supports and elevates every musical moment.
           </p>
-          <p className="text-gray-500 text-sm leading-relaxed mb-7">
-            His unique style blends jazz, funk, R&amp;B, and soul into a signature sound that has captivated audiences across the globe. Joseph has performed alongside Grammy-winning artists, headlined major international festivals, and released eight critically acclaimed albums.
+          <p
+            className="font-inter leading-relaxed"
+            style={{ fontSize: "clamp(12px,0.95vw,13px)", color: "#6B7280" }}
+          >
+            Whether leading bands, recording sessions, or performing on stage, Joseph focuses on serving the music with precision, tone, and feel. Passionate about growth and mentorship, he is dedicated to helping other musicians develop their skill, confidence, and understanding of bass in both live and studio environments.
           </p>
+        </div>
 
-          {/* Stats Row — bordered boxes */}
-          <div className="grid grid-cols-3 gap-3 mb-8">
-            {stats.map((s, i) => (
-              <div key={i} className="flex flex-col items-center text-center border border-gray-200 py-4 px-2">
-                <div className="w-8 h-8 flex items-center justify-center mb-2">
-                  <i className={`${s.icon} text-xl text-gray-700`} />
-                </div>
-                <span className="text-lg font-black text-gray-900">{s.value}</span>
-                <span className="text-xs text-gray-400 mt-0.5 leading-tight">{s.label}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex gap-3 flex-wrap">
-            <Link
-              to="/contact"
-              className="bg-[#1a7fa8] text-white text-xs font-bold px-6 py-3 uppercase tracking-wider hover:bg-[#166a8f] transition-colors whitespace-nowrap cursor-pointer"
+        {/* Left: Photo — below text on mobile, left on desktop */}
+        <div
+          className="relative overflow-hidden order-2 md:order-1"
+          style={{ minHeight: "clamp(260px,45vw,520px)" }}
+        >
+          <img
+            src="https://storage.readdy-site.link/project_files/c0c1db3d-22db-46b5-85e9-428db5f1168e/b505d7f1-a2cb-4b31-94d3-6f633474031c_871badd755a5afb1a73b6976ceb11bc693cce248.jpg?v=9b1cc5aeb513872a2a091ef6b7fb7e81"
+            alt="Joseph Wilson"
+            className="absolute inset-0 w-full h-full object-cover object-top"
+            style={{ filter: "grayscale(100%)" }}
+          />
+          {/* Play button overlay */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="flex items-center justify-center rounded-full border-2 border-white cursor-pointer transition-all hover:bg-white/20"
+              style={{ width: 56, height: 56 }}
             >
-              Book Me
-            </Link>
-            <Link
-              to="/music"
-              className="border border-gray-900 text-gray-900 text-xs font-bold px-6 py-3 uppercase tracking-wider hover:bg-gray-900 hover:text-white transition-colors whitespace-nowrap cursor-pointer"
-            >
-              My Music
-            </Link>
+              <i className="ri-play-fill text-white text-2xl" style={{ marginLeft: 3 }} />
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Services Strip */}
+      <div className="grid grid-cols-1 md:grid-cols-3 border-t border-gray-200">
+        {services.map((s, i) => (
+          <div
+            key={i}
+            className="flex items-start gap-5 py-8 px-6 md:py-10"
+            style={{
+              paddingLeft: "clamp(20px,4vw,56px)",
+              paddingRight: "clamp(20px,4vw,56px)",
+              borderBottom: i < services.length - 1 ? "1px solid #e5e7eb" : "none",
+            }}
+          >
+            {/* Icon box */}
+            <div
+              className="flex-shrink-0 flex items-center justify-center border border-gray-200"
+              style={{ width: 44, height: 44, minWidth: 44 }}
+            >
+              <i className={`${s.icon} text-gray-700`} style={{ fontSize: 18 }} />
+            </div>
+            <div>
+              <h4
+                className="font-inter font-bold uppercase tracking-wider mb-1.5"
+                style={{ fontSize: 12, color: "#111" }}
+              >
+                {s.title}
+              </h4>
+              <p
+                className="font-inter leading-relaxed"
+                style={{ fontSize: 12, color: "#9CA3AF" }}
+              >
+                {s.text}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

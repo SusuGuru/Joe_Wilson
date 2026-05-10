@@ -1,92 +1,192 @@
 import { useState } from "react";
 
+const artists = [
+  "Major Gospel Artists",
+  "International Soloists",
+  "Contemporary Worship Teams",
+];
+
+const stages = [
+  "Global Arenas",
+  "Live DVD Recordings",
+  "Festival Mainstages",
+];
+
 const quotes = [
   {
-    text: "The Foundation of the Band",
-    sub: "Bass is not just an instrument — it is the heartbeat of every great song. I live to make people feel the groove.",
+    text: '"The Foundation of the Band"',
+    sub: "A reputation built on reliability, impeccable timing, and a deep understanding of music theory and arrangement.",
   },
   {
-    text: "Music Is My Language",
+    text: '"Music Is My Language"',
     sub: "Every note I play tells a story. Every performance is a conversation between me and the audience.",
   },
   {
-    text: "Teaching the Next Generation",
+    text: '"Teaching the Next Generation"',
     sub: "Sharing knowledge is the greatest gift a musician can give. I pour everything into my students.",
   },
 ];
 
-const artists = [
-  "Marcus Miller", "Victor Wooten", "Thundercat", "Flea", "Jaco Pastorius",
-  "Larry Graham", "Stanley Clarke", "Bootsy Collins",
-];
-
-const stages = [
-  "Madison Square Garden", "Royal Albert Hall", "Hollywood Bowl",
-  "Glastonbury Festival", "Montreux Jazz Festival", "Coachella",
+const iconButtons = [
+  { icon: "ri-rhythm-line" },
+  { icon: "ri-record-circle-line" },
+  { icon: "ri-layout-grid-line" },
 ];
 
 export default function ExperienceSection() {
   const [activeQuote, setActiveQuote] = useState(0);
 
   return (
-    <section className="bg-gray-950 py-16 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Left: Stats + Quote */}
-        <div className="md:col-span-1">
-          <div className="mb-8">
-            <span className="text-[#1ab8e8] text-5xl font-black">12+</span>
-            <p className="text-gray-400 text-xs mt-1 leading-relaxed">
-              Years of professional experience performing, recording, and teaching music worldwide.
+    <section
+      className="relative w-full overflow-hidden"
+      style={{ background: "#1a1a1a" }}
+    >
+      {/* Background texture */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse at 60% 40%, rgba(7,125,167,0.08) 0%, transparent 65%)",
+        }}
+      />
+
+      <div
+        className="relative z-10 px-4 py-10 sm:px-6 md:px-10 md:py-16 lg:px-16 lg:py-20"
+      >
+        {/* Top row: 3 cards — stack on mobile, 3-col on md */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+          {/* Years card */}
+          <div
+            className="flex flex-col justify-center"
+            style={{
+              background: "#242424",
+              border: "1px solid rgba(255,255,255,0.08)",
+              padding: "clamp(20px,3vw,36px)",
+            }}
+          >
+            <span
+              className="font-inter font-black leading-none mb-2"
+              style={{ fontSize: "clamp(40px,5vw,64px)", color: "#077DA7" }}
+            >
+              12+
+            </span>
+            <p
+              className="font-inter font-bold text-white mb-1.5"
+              style={{ fontSize: "clamp(13px,1.1vw,14px)" }}
+            >
+              Years of Excellence
+            </p>
+            <p
+              className="font-inter leading-relaxed"
+              style={{ fontSize: "clamp(11px,0.85vw,12px)", color: "#9CA3AF" }}
+            >
+              Consistent growth across live worship, studio production, and music direction.
             </p>
           </div>
 
-          {/* Quote Carousel */}
-          <div className="bg-gray-900 p-5 rounded">
-            <i className="ri-double-quotes-l text-[#1ab8e8] text-2xl mb-3 block" />
-            <p className="text-white text-sm font-bold mb-2">{quotes[activeQuote].text}</p>
-            <p className="text-gray-400 text-xs leading-relaxed">{quotes[activeQuote].sub}</p>
-            <div className="flex gap-2 mt-4">
-              {quotes.map((_, i) => (
-                <button
+          {/* Artists card */}
+          <div
+            className="flex flex-col"
+            style={{
+              background: "#242424",
+              border: "1px solid rgba(255,255,255,0.08)",
+              padding: "clamp(20px,3vw,36px)",
+            }}
+          >
+            <h3
+              className="font-inter font-bold uppercase mb-4"
+              style={{ fontSize: "clamp(16px,2vw,26px)", color: "#C9A227" }}
+            >
+              Artists
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {artists.map((a, i) => (
+                <li
                   key={i}
-                  onClick={() => setActiveQuote(i)}
-                  className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${
-                    i === activeQuote ? "bg-[#1ab8e8]" : "bg-gray-600"
-                  }`}
-                />
+                  className="font-inter flex items-start gap-2"
+                  style={{ fontSize: "clamp(12px,0.9vw,13px)", color: "#D1D5DB" }}
+                >
+                  <span style={{ color: "#D1D5DB" }}>•</span>
+                  {a}
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
+
+          {/* Stages card */}
+          <div
+            className="flex flex-col"
+            style={{
+              background: "#242424",
+              border: "1px solid rgba(255,255,255,0.08)",
+              padding: "clamp(20px,3vw,36px)",
+            }}
+          >
+            <h3
+              className="font-inter font-bold uppercase mb-4"
+              style={{ fontSize: "clamp(16px,2vw,26px)", color: "#C9A227" }}
+            >
+              Stages
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {stages.map((s, i) => (
+                <li
+                  key={i}
+                  className="font-inter flex items-start gap-2"
+                  style={{ fontSize: "clamp(12px,0.9vw,13px)", color: "#D1D5DB" }}
+                >
+                  <span style={{ color: "#D1D5DB" }}>•</span>
+                  {s}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        {/* Middle: Artists */}
-        <div>
-          <h3 className="text-[#1ab8e8] text-sm font-bold tracking-widest uppercase mb-5">
-            Artists
-          </h3>
-          <ul className="space-y-2">
-            {artists.map((a, i) => (
-              <li key={i} className="flex items-center gap-2 text-gray-300 text-sm">
-                <span className="w-1 h-1 rounded-full bg-[#1ab8e8] flex-shrink-0" />
-                {a}
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Bottom: Wide quote card — stacks on mobile */}
+        <div
+          className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
+          style={{
+            background: "#242424",
+            border: "1px solid rgba(255,255,255,0.08)",
+            padding: "clamp(20px,3vw,40px)",
+          }}
+        >
+          <div className="flex-1 min-w-0">
+            <p
+              className="font-inter font-bold mb-2"
+              style={{ fontSize: "clamp(14px,1.4vw,20px)", color: "#fff" }}
+            >
+              {quotes[activeQuote].text}
+            </p>
+            <p
+              className="font-inter leading-relaxed"
+              style={{ fontSize: "clamp(11px,0.85vw,13px)", color: "#9CA3AF" }}
+            >
+              {quotes[activeQuote].sub}
+            </p>
+          </div>
 
-        {/* Right: Stages */}
-        <div>
-          <h3 className="text-[#1ab8e8] text-sm font-bold tracking-widest uppercase mb-5">
-            Stages
-          </h3>
-          <ul className="space-y-2">
-            {stages.map((s, i) => (
-              <li key={i} className="flex items-center gap-2 text-gray-300 text-sm">
-                <span className="w-1 h-1 rounded-full bg-[#1ab8e8] flex-shrink-0" />
-                {s}
-              </li>
+          {/* Icon nav buttons */}
+          <div className="flex gap-2 flex-shrink-0">
+            {iconButtons.map((btn, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveQuote(i)}
+                className="flex items-center justify-center transition-all cursor-pointer"
+                style={{
+                  width: 38,
+                  height: 38,
+                  background: i === activeQuote ? "#077DA7" : "#2e2e2e",
+                  border: "1px solid rgba(255,255,255,0.12)",
+                  color: i === activeQuote ? "#fff" : "#9CA3AF",
+                  borderRadius: 0,
+                }}
+              >
+                <i className={`${btn.icon} text-sm`} />
+              </button>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </section>

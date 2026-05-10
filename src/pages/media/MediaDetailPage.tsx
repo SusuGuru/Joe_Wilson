@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { mediaItems } from "@/mocks/media";
 import Navbar from "@/components/feature/Navbar";
-import CTASection from "@/pages/home/components/CTASection";
+import CTASection from "@/components/feature/CTASection";
 import Footer from "@/components/feature/Footer";
 
 const categoryColors: Record<string, string> = {

@@ -1,10 +1,8 @@
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
-import CTASection from "@/pages/home/components/CTASection";
+import CTASection from "@/components/feature/CTASection";
 import ServicesHero from "./components/ServicesHero";
 import ServicesListSection from "./components/ServicesListSection";
-import ProcessSection from "./components/ProcessSection";
-import StatsSection from "./components/StatsSection";
 
 export default function ServicesPage() {
   return (
@@ -12,8 +10,6 @@ export default function ServicesPage() {
       <Navbar />
       <ServicesHero />
       <ServicesListSection />
-      <StatsSection />
-      <ProcessSection />
       <CTASection />
       <Footer />
     </div>

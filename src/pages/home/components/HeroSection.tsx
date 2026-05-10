@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import heroBackground from "../../../assets/home/homehero.png";
 
 export default function HeroSection() {
   const [playing, setPlaying] = useState(false);
-  const [progress, setProgress] = useState(28);
-  const [volume, setVolume] = useState(75);
+  const [progress, setProgress] = useState(0);
+  const [volume, setVolume] = useState(70);
   const progressRef = useRef<HTMLDivElement>(null);
   const volumeRef = useRef<HTMLDivElement>(null);
 
@@ -23,117 +24,195 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative w-full h-screen min-h-[680px] overflow-hidden flex flex-col">
-      {/* Background */}
-      <img
-        src="https://static.readdy.ai/image/bd3e65a9c2956e637f2d341da068edd0/944c18d1fa3d83a747e487affb1ee507.png"
-        alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover object-top"
-      />
-      {/* Subtle left gradient for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent" />
-      {/* Bottom fade into player */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/80 to-transparent" />
+    <section className="relative w-full h-screen" style={{ minHeight: "600px" }}>
 
-      {/* Main content — grows to fill, text at bottom-left */}
-      <div className="relative z-10 flex-1 flex flex-col justify-end px-8 md:px-16 pb-6 w-full">
-        {/* Tags */}
-        <div className="flex flex-wrap gap-x-4 gap-y-1 mb-4 items-center">
-          <span className="text-[#1ab8e8] text-xs font-bold tracking-widest uppercase">Bass DJ Artist</span>
-          <span className="text-white/30 text-xs">•</span>
-          <span className="text-white/60 text-xs font-semibold tracking-widest uppercase">Music Director</span>
-          <span className="text-white/30 text-xs">•</span>
-          <span className="text-white/60 text-xs font-semibold tracking-widest uppercase">Producer</span>
+      {/* Background image */}
+      <img
+        src={heroBackground}
+        alt="Hero Background"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+
+      {/* Minimal overlay — just enough for text contrast, preserves image quality */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.5) 100%)",
+        }}
+      />
+
+      {/* ── Centered hero content ── */}
+      <div className="absolute inset-0 z-10 flex flex-col items-start md:items-center justify-center text-left md:text-center px-6 md:px-12">
+
+        {/* Subtitle row */}
+        <div className="flex items-center justify-start md:justify-center mb-2 md:mb-4 w-full">
+          <span
+            className="font-inter font-bold uppercase whitespace-nowrap text-[#4ED1FF]"
+            style={{ 
+              fontSize: "clamp(11.5px, 3.2vw, 19px)",
+              letterSpacing: "0.06em"
+            }}
+          >
+            BASS GUITARIST &bull; MUSIC DIRECTOR &bull; PRODUCER
+          </span>
         </div>
 
-        {/* Title */}
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase leading-none mb-6 tracking-tight">
-          Joe Wilson<br />Bass
+        {/* Main title */}
+        <h1
+          className="font-inter font-bold text-white uppercase leading-[1.05] tracking-tight mb-8"
+          style={{ fontSize: "clamp(46px, 12vw, 96px)" }}
+        >
+          Joe Wilson<br className="block md:hidden" />
+          <span className="hidden md:inline"> </span>Bass
         </h1>
 
-        {/* Hire Me CTA */}
-        <div className="mb-0">
+        {/* CTA buttons */}
+        <div className="flex flex-row flex-nowrap gap-3 md:gap-4 justify-start md:justify-center w-full">
           <Link
             to="/contact"
-            className="inline-block bg-[#1a7fa8] text-white text-xs font-bold px-8 py-3 uppercase tracking-wider hover:bg-[#166a8f] transition-colors whitespace-nowrap cursor-pointer"
+            className="font-inter font-bold uppercase tracking-wider text-white transition-colors whitespace-nowrap cursor-pointer text-center"
+            style={{
+              background: "#077DA7",
+              padding: "clamp(10px, 2.5vw, 13px) clamp(16px, 4vw, 28px)",
+              fontSize: "clamp(9px, 2.2vw, 11px)",
+              letterSpacing: "0.15em",
+            }}
+            onMouseEnter={e => ((e.currentTarget as HTMLElement).style.background = "#05637f")}
+            onMouseLeave={e => ((e.currentTarget as HTMLElement).style.background = "#077DA7")}
           >
-            Hire Me
+            Book Me
+          </Link>
+          <Link
+            to="/masterclass"
+            className="font-inter font-bold uppercase tracking-wider text-white transition-colors whitespace-nowrap cursor-pointer text-center"
+            style={{
+              border: "1px solid rgba(255,255,255,0.7)",
+              padding: "clamp(10px, 2.5vw, 13px) clamp(16px, 4vw, 28px)",
+              fontSize: "clamp(9px, 2.2vw, 11px)",
+              letterSpacing: "0.15em",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.background = "#fff";
+              (e.currentTarget as HTMLElement).style.color = "#111";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.background = "transparent";
+              (e.currentTarget as HTMLElement).style.color = "#fff";
+            }}
+          >
+            Join Bass Masterclass
           </Link>
         </div>
       </div>
 
-      {/* Full-width audio player bar — pinned to bottom */}
-      <div className="relative z-10 w-full bg-black/80 backdrop-blur-sm border-t border-white/10 px-6 md:px-10 py-3 flex items-center gap-4">
-        {/* Prev */}
-        <button className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer flex-shrink-0">
-          <i className="ri-skip-back-fill text-base" />
-        </button>
-
-        {/* Play/Pause */}
-        <button
-          onClick={() => setPlaying(!playing)}
-          className="w-9 h-9 flex items-center justify-center text-white cursor-pointer flex-shrink-0"
-        >
-          <i className={`text-2xl ${playing ? "ri-pause-fill" : "ri-play-fill"}`} />
-        </button>
-
-        {/* Next */}
-        <button className="w-6 h-6 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer flex-shrink-0">
-          <i className="ri-skip-forward-fill text-base" />
-        </button>
-
-        {/* Track info */}
-        <div className="hidden sm:flex flex-col min-w-0 flex-shrink-0 w-32">
-          <span className="text-white text-xs font-bold truncate">Groove Theory</span>
-          <span className="text-gray-400 text-xs truncate">Joseph Wilson</span>
+      {/* ── Audio player — centered, floating above bottom ── */}
+      <div
+        className="absolute z-20 flex items-center"
+        style={{
+          bottom: "48px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "min(860px, 90%)",
+          background: "rgba(12,12,12,0.88)",
+          backdropFilter: "blur(12px)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          borderRadius: "6px",
+          padding: "0 16px",
+          height: "58px",
+          gap: "12px",
+        }}
+      >
+        {/* Album art */}
+        <div className="hidden md:block flex-shrink-0 w-9 h-9 rounded-full overflow-hidden border border-white/20">
+          <img
+            src="https://readdy.ai/api/search-image?query=album%20cover%20art%20gospel%20music%20his%20glory%20spiritual%20worship%20dark%20cinematic&width=36&height=36&seq=hero-album-art&orientation=squarish"
+            alt="His Glory"
+            className="w-full h-full object-cover"
+          />
         </div>
 
-        {/* Progress bar */}
-        <div className="flex-1 flex items-center gap-3">
-          <span className="text-gray-500 text-xs whitespace-nowrap hidden sm:block">1:12</span>
+        {/* Track info */}
+        <div className="hidden md:flex flex-shrink-0 flex-col" style={{ minWidth: "90px", maxWidth: "110px" }}>
+          <span className="font-inter font-bold text-white truncate" style={{ fontSize: "11px" }}>
+            His Glory
+          </span>
+          <span className="font-inter truncate" style={{ fontSize: "10px", color: "#077DA7" }}>
+            His Presence Album
+          </span>
+        </div>
+
+        {/* Playback controls — 3 buttons only */}
+        <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
+          <button className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer transition-colors">
+            <i className="ri-skip-back-fill text-xs md:text-sm" />
+          </button>
+          <button
+            onClick={() => setPlaying(!playing)}
+            className="w-7 h-7 md:w-8 md:h-8 flex items-center justify-center text-white cursor-pointer transition-colors hover:text-[#077DA7]"
+          >
+            <i className={`text-lg md:text-xl ${playing ? "ri-pause-fill" : "ri-play-fill"}`} />
+          </button>
+          <button className="w-6 h-6 md:w-7 md:h-7 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer transition-colors">
+            <i className="ri-skip-forward-fill text-xs md:text-sm" />
+          </button>
+        </div>
+
+        {/* Progress bar + timestamps */}
+        <div className="flex-1 flex items-center gap-2 md:gap-3 min-w-0">
+          <span className="font-inter text-gray-500 whitespace-nowrap hidden md:block" style={{ fontSize: "10px" }}>
+            0:00
+          </span>
           <div
             ref={progressRef}
-            className="flex-1 h-1 bg-white/20 rounded-full cursor-pointer relative"
+            className="flex-1 rounded-full cursor-pointer relative"
+            style={{ height: "3px", background: "rgba(255,255,255,0.15)" }}
             onClick={handleProgressClick}
           >
             <div
-              className="h-full bg-[#1ab8e8] rounded-full relative"
-              style={{ width: `${progress}%` }}
+               className="h-full rounded-full relative"
+               style={{ width: `${progress}%`, background: "#077DA7" }}
             >
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow" />
+               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-md" />
             </div>
           </div>
-          <span className="text-gray-500 text-xs whitespace-nowrap hidden sm:block">4:12</span>
+          <span className="font-inter text-gray-500 whitespace-nowrap block" style={{ fontSize: "10px" }}>
+            0:00
+          </span>
         </div>
 
         {/* Volume */}
-        <div className="hidden md:flex items-center gap-2 flex-shrink-0">
-          <div className="w-4 h-4 flex items-center justify-center">
-            <i className="ri-volume-up-line text-gray-400 text-sm" />
-          </div>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <i className="ri-volume-up-line text-gray-400" style={{ fontSize: "14px" }} />
           <div
             ref={volumeRef}
-            className="w-20 h-1 bg-white/20 rounded-full cursor-pointer relative"
+            className="hidden md:block rounded-full cursor-pointer relative"
+            style={{ width: "64px", height: "3px", background: "rgba(255,255,255,0.15)" }}
             onClick={handleVolumeClick}
           >
             <div
-              className="h-full bg-gray-400 rounded-full"
-              style={{ width: `${volume}%` }}
+              className="h-full rounded-full"
+              style={{ width: `${volume}%`, background: "#6B7280" }}
             />
           </div>
         </div>
 
-        {/* Actions */}
-        <div className="flex gap-2 flex-shrink-0">
-          <button className="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer">
-            <i className="ri-shuffle-line text-sm" />
-          </button>
-          <button className="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-white cursor-pointer">
-            <i className="ri-repeat-line text-sm" />
-          </button>
-          <button className="w-5 h-5 flex items-center justify-center text-gray-400 hover:text-[#1ab8e8] cursor-pointer">
-            <i className="ri-heart-line text-sm" />
-          </button>
+        {/* Available on */}
+        <div className="hidden md:flex items-center gap-2 flex-shrink-0">
+          <span className="font-inter text-gray-500 whitespace-nowrap" style={{ fontSize: "10px" }}>
+            Available on:
+          </span>
+          <a href="#" rel="nofollow" className="text-gray-400 hover:text-[#1DB954] transition-colors cursor-pointer">
+            <i className="ri-spotify-fill" style={{ fontSize: "16px" }} />
+          </a>
+          <a href="#" rel="nofollow" className="text-gray-400 hover:text-[#FF0000] transition-colors cursor-pointer">
+            <i className="ri-youtube-fill" style={{ fontSize: "16px" }} />
+          </a>
+          <a href="#" rel="nofollow" className="text-gray-400 hover:text-[#FF5500] transition-colors cursor-pointer">
+            <i className="ri-soundcloud-fill" style={{ fontSize: "16px" }} />
+          </a>
+          <a href="#" rel="nofollow" className="text-gray-400 hover:text-white transition-colors cursor-pointer">
+            <i className="ri-amazon-fill" style={{ fontSize: "16px" }} />
+          </a>
         </div>
       </div>
     </section>

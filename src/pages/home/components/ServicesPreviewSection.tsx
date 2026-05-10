@@ -1,61 +1,127 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import livePerformance from "../../../assets/home/servicesliveperformance.jpg";
+import sessionRecording from "../../../assets/home/servicesstudio.jpg";
+import musicProduction from "../../../assets/home/servicesmusicproduction.jpg";
+import musicDirection from "../../../assets/home/servicesmusicdirection.jpg";
 
-const services = [
+interface Service {
+  title: string;
+  image: string;
+  description?: string;
+  active?: boolean;
+}
+
+const services: Service[] = [
   {
-    tag: "Live Performance",
-    title: "Studio & Session Bass",
-    image: "https://static.readdy.ai/image/bd3e65a9c2956e637f2d341da068edd0/e6acbd22a058ea5bccbfcec228d8d163.jpeg",
-    showButton: false,
+    title: "Live\nPerformance",
+    image: livePerformance,
   },
   {
-    tag: "Music Production",
-    title: "Music Production",
-    image: "https://storage.readdy-site.link/project_files/c0c1db3d-22db-46b5-85e9-428db5f1168e/777ea6e7-2c96-4854-bf3b-a4abc3bffca4_18dc236e3024acdc4b26c780b0b1f61e4729d067.jpg?v=7b9ddb8cdb7bd2a0ea72d911b005d56d",
-    showButton: true,
+    title: "Studio\n& Session Bass",
+    image: sessionRecording,
+    description:
+      "Remote bass recording and in-studio session work for artists, choirs and producers.",
+    active: true,
   },
   {
-    tag: "Music Direction",
-    title: "Music Direction",
-    image: "https://storage.readdy-site.link/project_files/c0c1db3d-22db-46b5-85e9-428db5f1168e/5fa9540f-722f-4a09-8937-f475778f0116_57dd58ddace86e2dbf7b59e4c5231b37426bec09.jpg?v=63da87d61a44ed20c629057cc923191d",
-    showButton: false,
+    title: "Music\nProduction",
+    image: musicProduction,
+  },
+  {
+    title: "Music\nDirection",
+    image: musicDirection,
   },
 ];
 
 export default function ServicesPreviewSection() {
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
-    <section className="bg-white">
-      <h2 className="text-center text-xl font-black text-gray-900 py-12 tracking-widest uppercase">
-        Services
-      </h2>
-      {/* Flush full-width grid, no gaps */}
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        {services.map((service, i) => (
-          <div key={i} className="relative overflow-hidden group cursor-pointer h-64 md:h-72">
-            <img
-              src={service.image}
-              alt={service.title}
-              className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-5">
-              <p className="text-[#1ab8e8] text-xs font-bold uppercase tracking-widest mb-1">
-                {service.tag}
-              </p>
-              <h3 className="text-white text-sm md:text-base font-black uppercase leading-tight mb-3">
-                {service.title}
-              </h3>
-              {service.showButton && (
-                <Link
-                  to="/services"
-                  className="inline-block bg-[#1a7fa8] text-white text-xs font-bold px-4 py-1.5 uppercase tracking-wider hover:bg-[#166a8f] transition-colors whitespace-nowrap"
-                >
-                  Learn More
-                </Link>
+    <div className="w-full flex flex-col">
+      {/* Section header */}
+      <div className="py-10 bg-white">
+        <h2 className="mb-4 text-center font-inter text-[clamp(28px,3.2vw,42px)] font-bold uppercase tracking-tight text-gray-900">
+          Services
+        </h2>
+      </div>
+      <section className="w-full flex flex-col md:flex-row h-auto md:h-[clamp(240px,28vw,340px)]">
+        {services.map((service, i) => {
+          const isActive = service.active;
+          const isHovered = hovered === i;
+
+          return (
+            <div
+              key={i}
+              className="relative flex-none h-[250px] md:h-auto md:flex-1 overflow-hidden cursor-pointer"
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              {/* Background image */}
+              <img
+                src={service.image}
+                alt={service.title}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+
+              {/* Content */}
+              {isActive ? (
+                /* Active card */
+                <div className="absolute inset-0 flex flex-col justify-center items-start text-left px-6 md:justify-end md:pb-8">
+                  <h3
+                    className="font-bold uppercase text-white leading-tight mb-3 whitespace-pre-line"
+                    style={{
+                      fontSize: "clamp(22px, 1.7vw, 26px)",
+                      letterSpacing: "0.04em",
+                      textShadow: "0px 0px 30px rgba(255, 255, 255, 0.42)",
+                    }}
+                  >
+                    {service.title}
+                  </h3>
+                  <p
+                    className="text-white leading-relaxed mb-5"
+                    style={{ fontSize: "clamp(13px, 0.85vw, 13px)", opacity: 0.88 }}
+                  >
+                    {service.description}
+                  </p>
+                  <Link
+                    to="/services"
+                    className="inline-block font-bold uppercase text-white tracking-wider transition-colors whitespace-nowrap self-start"
+                    style={{
+                      backgroundColor: "#077DA7",
+                      padding: "9px 18px",
+                      fontSize: "clamp(11px, 0.7vw, 11px)",
+                      letterSpacing: "0.12em",
+                    }}
+                    onMouseEnter={(e) =>
+                      ((e.currentTarget as HTMLElement).style.backgroundColor = "#05637f")
+                    }
+                    onMouseLeave={(e) =>
+                      ((e.currentTarget as HTMLElement).style.backgroundColor = "#077DA7")
+                    }
+                  >
+                    Request Quote
+                  </Link>
+                </div>
+              ) : (
+                /* Inactive card */
+                <div className="absolute inset-0 flex items-end justify-center text-center pb-8 px-6 md:justify-start md:text-left">
+                  <h3
+                    className="font-bold uppercase text-white leading-tight whitespace-pre-line"
+                    style={{
+                      fontSize: "clamp(20px, 1.5vw, 22px)",
+                      letterSpacing: "0.04em",
+                      textShadow: "0px 0px 30px rgba(255, 255, 255, 0.42)",
+                    }}
+                  >
+                    {service.title}
+                  </h3>
+                </div>
               )}
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          );
+        })}
+      </section>
+    </div>
   );
 }

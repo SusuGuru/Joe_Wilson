@@ -1,69 +1,54 @@
 const includes = [
-  "91 in-depth video lessons",
-  "40+ hours of content",
-  "200+ downloadable bass tabs",
-  "50 backing tracks",
-  "Private student community",
-  "Monthly live Q&A sessions",
-  "Certificate of completion",
-  "Lifetime access & updates",
+  { label: "Full Lifetime Access" },
+  { label: "Private Community Access" },
+  { label: "Custom Backing Tracks" },
+  { label: "Monthly Live Q&A" },
 ];
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="bg-white py-16 px-6 md:px-16">
-      <div className="max-w-2xl mx-auto text-center">
-        <p className="text-[#1ab8e8] text-xs font-bold uppercase tracking-widest mb-2">Limited Time Offer</p>
-        <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-2">Complete Mastery Suite</h2>
-        <p className="text-gray-500 text-sm mb-8">
-          Everything you need to become a world-class bassist — in one complete package.
-        </p>
+    <section id="pricing" className="bg-[#f0f0f0] py-10 md:py-24 px-4 md:px-16">
+      <div className="max-w-[620px] mx-auto">
+        {/* White card — sharp edges, generous padding on desktop, tighter on mobile */}
+        <div className="bg-white p-7 md:p-14 shadow-sm">
+          {/* Label */}
+          <p
+            className="text-center text-[#2596BE] text-[10px] md:text-[11px] font-bold uppercase mb-2 md:mb-3"
+            style={{ letterSpacing: "0.2em" }}
+          >
+            Lifetime Access
+          </p>
 
-        <div className="bg-gray-900 rounded-lg p-8 text-left">
+          {/* Title */}
+          <h2 className="text-center font-fraunces text-[22px] md:text-[36px] font-black text-[#1a1a1a] leading-[1.1] mb-4 md:mb-6">
+            Complete Mastery Suite
+          </h2>
+
           {/* Price */}
-          <div className="text-center mb-6">
-            <div className="flex items-center justify-center gap-3 mb-1">
-              <span className="text-gray-400 text-xl line-through">$497</span>
-              <span className="bg-[#1ab8e8] text-white text-sm font-bold px-3 py-1 rounded-full">SAVE 40%</span>
-            </div>
-            <div className="flex items-end justify-center gap-1">
-              <span className="text-gray-400 text-2xl font-bold">$</span>
-              <span className="text-white text-6xl font-black leading-none">297</span>
-            </div>
-            <p className="text-gray-400 text-xs mt-2">One-time payment · Lifetime access</p>
+          <div className="flex items-baseline justify-center gap-3 mb-6 md:mb-8">
+            <span className="text-[#9ca3af] text-[18px] md:text-[22px]">$499</span>
+            <span className="text-[#1a1a1a] text-[40px] md:text-[56px] font-black leading-none">$297</span>
           </div>
 
-          {/* Includes */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-8">
+          {/* Checkmarks — 2 column */}
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-x-8 md:gap-x-10 gap-y-3 md:gap-y-3.5 mb-6 md:mb-8">
             {includes.map((item, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <div className="w-4 h-4 flex items-center justify-center flex-shrink-0">
-                  <i className="ri-checkbox-circle-fill text-[#1ab8e8] text-base" />
-                </div>
-                <span className="text-gray-300 text-sm">{item}</span>
+              <div key={i} className="flex items-center gap-2 md:gap-2.5">
+                <i className="ri-check-line text-[#2596BE] text-[14px] md:text-[16px] flex-shrink-0" />
+                <span className="text-[#374151] text-[12px] md:text-[13px]">{item.label}</span>
               </div>
             ))}
           </div>
 
           {/* CTA Button */}
-          <button className="w-full bg-[#1ab8e8] text-white text-base font-black py-4 rounded uppercase tracking-wider hover:bg-[#0fa0cc] transition-colors cursor-pointer whitespace-nowrap">
-            Enroll Now — Get Instant Access
+          <button className="w-full bg-[#2596BE] text-white text-[13px] md:text-[14px] font-bold py-3.5 md:py-4 uppercase hover:bg-[#1e7fa3] transition-colors duration-200 cursor-pointer tracking-wide">
+            Secure Your Spot Today
           </button>
 
-          <p className="text-center text-gray-500 text-xs mt-4">
-            <i className="ri-shield-check-line mr-1" />
-            30-Day Money Back Guarantee · Secure Checkout
+          {/* Guarantee */}
+          <p className="text-center text-[#9ca3af] text-[11px] md:text-[12px] mt-3 md:mt-4">
+            30-Day Money Back Guarantee. No questions asked.
           </p>
-        </div>
-
-        {/* Payment options */}
-        <div className="mt-6 flex items-center justify-center gap-4 flex-wrap">
-          {["ri-visa-line", "ri-mastercard-line", "ri-paypal-line", "ri-bank-card-line"].map((icon, i) => (
-            <div key={i} className="w-8 h-8 flex items-center justify-center text-gray-400">
-              <i className={`${icon} text-2xl`} />
-            </div>
-          ))}
-          <span className="text-gray-400 text-xs">All major cards accepted</span>
         </div>
       </div>
     </section>

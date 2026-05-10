@@ -1,77 +1,74 @@
 const endorsements = [
   {
-    name: "Marcus Reid",
-    role: "Grammy-Winning Bassist",
-    avatar: "https://readdy.ai/api/search-image?query=professional%20male%20musician%20portrait%20dark%20background%2C%20confident%20expression%2C%20studio%20lighting%2C%20music%20artist%20headshot%2C%20dark%20tones&width=60&height=60&seq=endorse-1&orientation=squarish",
-    quote: "Joseph's masterclass is the most comprehensive bass education I've ever seen. His ability to break down complex concepts into digestible lessons is unmatched. Every serious bassist needs this.",
-    rating: 5,
+    name: "Marcus Thorne",
+    role: "Lead Bass, Greater Faith Choir",
+    avatar:
+      "https://readdy.ai/api/search-image?query=professional%20male%20musician%20portrait%20dark%20background%2C%20confident%20expression%2C%20studio%20lighting%2C%20music%20artist%20headshot%2C%20dark%20tones&width=60&height=60&seq=endorse-1&orientation=squarish",
+    quote:
+      "The way Elias breaks down chord substitutions changed my entire approach to church services. It's more than bass; it's musicality.",
   },
   {
-    name: "Alicia Fontaine",
-    role: "Music Director, Broadway",
-    avatar: "https://readdy.ai/api/search-image?query=professional%20female%20musician%20portrait%20dark%20background%2C%20confident%20expression%2C%20studio%20lighting%2C%20music%20artist%20headshot%2C%20elegant&width=60&height=60&seq=endorse-2&orientation=squarish",
-    quote: "I've worked with hundreds of musicians over my career, and Joseph Wilson stands out as one of the most gifted educators I've encountered. This masterclass is a game-changer.",
-    rating: 5,
+    name: "David Chen",
+    role: "Session Player",
+    avatar:
+      "https://readdy.ai/api/search-image?query=professional%20asian%20male%20musician%20portrait%20dark%20background%2C%20confident%20expression%2C%20studio%20lighting%2C%20music%20artist%20headshot&width=60&height=60&seq=endorse-2&orientation=squarish",
+    quote:
+      "This is the first course that actually addresses the spirit of the music, not just the scales. Truly high-end education.",
   },
   {
-    name: "Devon Clarke",
-    role: "Touring Bassist, Major Label",
-    avatar: "https://readdy.ai/api/search-image?query=young%20male%20musician%20portrait%20dark%20background%2C%20casual%20style%2C%20studio%20lighting%2C%20music%20artist%20headshot%2C%20modern%20look&width=60&height=60&seq=endorse-3&orientation=squarish",
-    quote: "After 10 years of playing, I thought I knew everything. Joseph's masterclass showed me how much I was missing. My playing improved dramatically within the first month.",
-    rating: 5,
+    name: "Sarah Jenkins",
+    role: "Independent Artist",
+    avatar:
+      "https://readdy.ai/api/search-image?query=professional%20female%20musician%20portrait%20dark%20background%2C%20confident%20expression%2C%20studio%20lighting%2C%20music%20artist%20headshot%2C%20elegant&width=60&height=60&seq=endorse-3&orientation=squarish",
+    quote:
+      "From technique to gear knowledge, this masterclass covers it all. The premium feel of the platform makes learning a joy.",
   },
 ];
 
 export default function EndorsementsSection() {
   return (
-    <section className="bg-gray-50 py-16 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
-          <p className="text-[#1ab8e8] text-xs font-bold uppercase tracking-widest mb-2">What Pros Say</p>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900">Artist Endorsements</h2>
-          <p className="text-gray-500 text-sm mt-3 max-w-xl mx-auto">
-            Hear from professional musicians and industry leaders who have experienced Joseph&apos;s teaching firsthand.
+    <section className="bg-white py-10 md:py-24 px-4 md:px-16">
+      <div className="max-w-[1120px] mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="font-fraunces text-[26px] md:text-[42px] font-black text-[#1a1a1a] leading-[1.15] italic">
+            Artist Endorsements
+          </h2>
+          <p className="text-[#6b7280] text-[13px] md:text-[14px] mt-2 md:mt-3 max-w-[360px] mx-auto leading-[1.7]">
+            Hear from the players who transformed their sound through the Masterclass.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Cards — 1 col mobile, 3 col desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {endorsements.map((e, i) => (
-            <div key={i} className="bg-white rounded-lg p-6 border border-gray-100">
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: e.rating }).map((_, j) => (
-                  <div key={j} className="w-4 h-4 flex items-center justify-center">
-                    <i className="ri-star-fill text-[#1ab8e8] text-sm" />
-                  </div>
-                ))}
+            <div key={i} className="bg-[#f5f7fa] p-5 md:p-7">
+              {/* Quotation mark */}
+              <div
+                className="text-[#2596BE] text-[42px] md:text-[48px] font-black leading-none mb-2 md:mb-3"
+                style={{ fontFamily: "Georgia, serif" }}
+              >
+                &ldquo;
               </div>
 
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">&ldquo;{e.quote}&rdquo;</p>
+              <p className="text-[#374151] text-[12px] md:text-[13px] leading-[1.75] mb-5 md:mb-6">
+                {e.quote}
+              </p>
 
+              {/* Author */}
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
-                  <img src={e.avatar} alt={e.name} className="w-full h-full object-cover object-top" />
+                <div className="w-9 h-9 md:w-10 md:h-10 overflow-hidden flex-shrink-0">
+                  <img
+                    src={e.avatar}
+                    alt={e.name}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
                 <div>
-                  <p className="text-gray-900 text-sm font-bold">{e.name}</p>
-                  <p className="text-gray-400 text-xs">{e.role}</p>
+                  <p className="text-[#1a1a1a] text-[12px] md:text-[13px] font-bold leading-tight">{e.name}</p>
+                  <p className="text-[#9ca3af] text-[10px] md:text-[11px] leading-tight">{e.role}</p>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Stats row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 bg-gray-900 rounded-lg p-8">
-          {[
-            { value: "550K+", label: "Students Enrolled" },
-            { value: "4.9/5", label: "Average Rating" },
-            { value: "97%", label: "Completion Rate" },
-            { value: "800+", label: "5-Star Reviews" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <p className="text-[#1ab8e8] text-3xl font-black mb-1">{stat.value}</p>
-              <p className="text-gray-400 text-xs uppercase tracking-wider">{stat.label}</p>
             </div>
           ))}
         </div>

@@ -1,6 +1,6 @@
 export default function AboutHero() {
   return (
-    <section className="relative h-[200px] md:h-[240px] w-full overflow-hidden mt-[52px]">
+    <section className="relative h-[250px] md:h-[350px] w-full overflow-hidden">
       <img
         src="https://static.readdy.ai/image/bd3e65a9c2956e637f2d341da068edd0/aa9dbbf5d3afc2cc83b427d7cebac1db.jpeg"
         alt="About Hero"

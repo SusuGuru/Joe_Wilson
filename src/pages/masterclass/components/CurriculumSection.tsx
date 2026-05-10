@@ -1,187 +1,102 @@
-import { useState } from "react";
-
-const modules = [
+const curriculumItems = [
   {
-    id: 1,
-    title: "Module 1: Foundations of Bass",
-    lessons: 12,
-    duration: "4h 30m",
-    topics: [
-      "Introduction & Course Overview",
-      "Instrument Setup & Maintenance",
-      "Proper Posture & Hand Positioning",
-      "Reading Bass Clef Notation",
-      "Basic Scales & Patterns",
-      "Rhythm & Timing Fundamentals",
-    ],
+    number: 1,
+    title: "Foundation & Tone",
+    desc: "Mastering the touch and equipment settings for that signature warm gospel sound.",
   },
   {
-    id: 2,
-    title: "Module 2: Technique Development",
-    lessons: 15,
-    duration: "5h 45m",
-    topics: [
-      "Fingerstyle Technique",
-      "Slap & Pop Fundamentals",
-      "Pick Playing",
-      "Two-Hand Tapping",
-      "Muting Techniques",
-      "Speed & Accuracy Exercises",
-    ],
+    number: 2,
+    title: "The Harmonic Language",
+    desc: "Extended chords, inversions, and the 'Gospel Number System' decoded.",
   },
   {
-    id: 3,
-    title: "Module 3: Music Theory for Bassists",
-    lessons: 18,
-    duration: "6h 20m",
-    topics: [
-      "Intervals & Chord Tones",
-      "Major & Minor Scales",
-      "Modes & Their Applications",
-      "Chord Progressions",
-      "Walking Bass Lines",
-      "Improvisation Concepts",
-    ],
-  },
-  {
-    id: 4,
-    title: "Module 4: Genre Mastery",
-    lessons: 20,
-    duration: "7h 10m",
-    topics: [
-      "Funk & R&B Grooves",
-      "Jazz Bass Concepts",
-      "Rock & Metal Techniques",
-      "Latin Rhythms",
-      "Gospel Bass Playing",
-      "Electronic & Pop Bass",
-    ],
-  },
-  {
-    id: 5,
-    title: "Module 5: Studio & Live Performance",
-    lessons: 16,
-    duration: "5h 55m",
-    topics: [
-      "Recording Studio Etiquette",
-      "DI Recording Techniques",
-      "Live Sound & Monitoring",
-      "Stage Presence",
-      "Working with a Band",
-      "Session Musician Tips",
-    ],
-  },
-  {
-    id: 6,
-    title: "Module 6: Career & Business",
-    lessons: 10,
-    duration: "3h 40m",
-    topics: [
-      "Building Your Brand",
-      "Social Media for Musicians",
-      "Networking & Connections",
-      "Contracts & Agreements",
-      "Touring & Gigging",
-      "Passive Income Streams",
-    ],
+    number: 3,
+    title: "Advanced Improvisation",
+    desc: "Creating sophisticated fills that serve the song without overplaying.",
   },
 ];
 
-const bonusItems = [
-  { icon: "ri-file-music-line", title: "Bass Tab Library", desc: "200+ professionally transcribed bass tabs" },
-  { icon: "ri-headphone-line", title: "Backing Tracks", desc: "50 high-quality practice backing tracks" },
-  { icon: "ri-community-line", title: "Private Community", desc: "Access to exclusive student Discord server" },
-  { icon: "ri-live-line", title: "Monthly Live Q&A", desc: "Monthly live sessions with Joseph Wilson" },
+const featureCards = [
+  {
+    icon: "ri-computer-line",
+    title: "48 HD Video Lessons",
+    desc: "Multi-angle 4K instruction",
+  },
+  {
+    icon: "ri-file-pdf-2-line",
+    title: "PDF Workbooks",
+    desc: "Tablature and sheet music",
+  },
+  {
+    icon: "ri-headphone-line",
+    title: "Backing Tracks",
+    desc: "Professionally recorded stems",
+  },
+  {
+    icon: "ri-group-line",
+    title: "Private Community",
+    desc: "Weekly feedback from instructors",
+  },
 ];
 
 export default function CurriculumSection() {
-  const [openModule, setOpenModule] = useState<number | null>(1);
-
   return (
-    <section className="bg-white py-16 px-6 md:px-16">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left: Accordion */}
-          <div className="flex-1">
-            <p className="text-[#1ab8e8] text-xs font-bold uppercase tracking-widest mb-2">What You&apos;ll Learn</p>
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-2">The Curriculum</h2>
-            <p className="text-gray-500 text-sm mb-6">
-              91 lessons across 6 comprehensive modules. Everything you need to go from beginner to professional.
+    <section className="bg-white py-10 md:py-24 px-4 md:px-16">
+      <div className="max-w-[1120px] mx-auto">
+        {/* Mobile: stack vertically. Desktop: side-by-side */}
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
+
+          {/* Left: Curriculum list */}
+          <div className="w-full lg:max-w-[400px] flex-shrink-0">
+            <h2 className="font-fraunces text-[24px] md:text-[36px] font-black text-[#1a1a1a] leading-[1.15] mb-2 md:mb-3">
+              The Curriculum
+            </h2>
+            <p className="text-[#6b7280] text-[12px] md:text-[13px] leading-[1.7] mb-6 md:mb-8">
+              A 12-week comprehensive journey from fundamental pocket to advanced harmonic substitution.
             </p>
 
-            <div className="space-y-2">
-              {modules.map((mod) => (
-                <div key={mod.id} className="border border-gray-200 rounded-lg overflow-hidden">
-                  <button
-                    onClick={() => setOpenModule(openModule === mod.id ? null : mod.id)}
-                    className="w-full flex items-center justify-between px-5 py-4 bg-white hover:bg-gray-50 transition-colors cursor-pointer text-left"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 flex items-center justify-center bg-[#1ab8e8] rounded-full flex-shrink-0">
-                        <span className="text-white text-xs font-black">{mod.id}</span>
-                      </div>
-                      <span className="text-gray-900 text-sm font-bold">{mod.title}</span>
-                    </div>
-                    <div className="flex items-center gap-4 flex-shrink-0">
-                      <span className="text-gray-400 text-xs hidden sm:block">{mod.lessons} lessons · {mod.duration}</span>
-                      <div className="w-5 h-5 flex items-center justify-center">
-                        <i className={`text-gray-400 text-base transition-transform ${openModule === mod.id ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line"}`} />
-                      </div>
-                    </div>
-                  </button>
-                  {openModule === mod.id && (
-                    <div className="px-5 pb-4 bg-gray-50 border-t border-gray-100">
-                      <ul className="space-y-2 mt-3">
-                        {mod.topics.map((topic, j) => (
-                          <li key={j} className="flex items-center gap-2 text-sm text-gray-600">
-                            <div className="w-4 h-4 flex items-center justify-center flex-shrink-0">
-                              <i className="ri-play-circle-line text-[#1ab8e8] text-sm" />
-                            </div>
-                            {topic}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+            {/* Numbered list — sharp square badges, no connector lines */}
+            <div className="space-y-4 md:space-y-5">
+              {curriculumItems.map((item) => (
+                <div key={item.number} className="flex gap-3 md:gap-4 items-start">
+                  <div className="w-[24px] h-[24px] md:w-[26px] md:h-[26px] flex-shrink-0 flex items-center justify-center bg-[#2596BE]">
+                    <span className="text-white text-[11px] md:text-[12px] font-bold leading-none">{item.number}</span>
+                  </div>
+                  <div>
+                    <h4 className="text-[#1a1a1a] text-[13px] md:text-[14px] font-bold mb-0.5 md:mb-1 leading-snug">
+                      {item.title}
+                    </h4>
+                    <p className="text-[#6b7280] text-[11px] md:text-[12px] leading-[1.6]">
+                      {item.desc}
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right: Bonus */}
-          <div className="w-full lg:w-80 flex-shrink-0">
-            <div className="bg-gray-900 rounded-lg p-6 sticky top-24">
-              <p className="text-[#1ab8e8] text-xs font-bold uppercase tracking-widest mb-1">Included Free</p>
-              <h3 className="text-white text-xl font-black mb-5">Bonus Materials</h3>
-              <div className="space-y-4">
-                {bonusItems.map((item, i) => (
-                  <div key={i} className="flex gap-3 items-start">
-                    <div className="w-9 h-9 flex items-center justify-center bg-[#1ab8e8]/10 rounded-lg flex-shrink-0">
-                      <i className={`${item.icon} text-[#1ab8e8] text-lg`} />
-                    </div>
-                    <div>
-                      <p className="text-white text-sm font-bold">{item.title}</p>
-                      <p className="text-gray-400 text-xs">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 pt-5 border-t border-gray-700">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-gray-400 text-sm line-through">$497</span>
-                  <span className="bg-[#1ab8e8] text-white text-xs font-bold px-2 py-0.5 rounded">40% OFF</span>
-                </div>
-                <p className="text-white text-3xl font-black mb-4">$297</p>
-                <a
-                  href="#pricing"
-                  className="block w-full bg-[#1ab8e8] text-white text-sm font-bold py-3 rounded text-center uppercase tracking-wider hover:bg-[#0fa0cc] transition-colors cursor-pointer whitespace-nowrap"
+          {/* Right: Feature grid */}
+          <div className="flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+              {featureCards.map((card, i) => (
+                <div
+                  key={i}
+                  className="bg-[#f5f7fa] p-5 md:p-8 flex flex-col items-center text-center min-h-[130px] md:min-h-[170px] justify-center"
                 >
-                  Enroll Now
-                </a>
-              </div>
+                  <div className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center bg-[#2596BE]/10 mb-3 md:mb-4">
+                    <i className={`${card.icon} text-[#2596BE] text-[18px] md:text-[22px]`} />
+                  </div>
+                  <h4 className="text-[#1a1a1a] text-[12px] md:text-[14px] font-bold mb-0.5 md:mb-1">
+                    {card.title}
+                  </h4>
+                  <p className="text-[#6b7280] text-[10px] md:text-[12px] leading-[1.5]">
+                    {card.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import Navbar from "@/components/feature/Navbar";
 import MediaHero from "./components/MediaHero";
 import MediaGrid from "./components/MediaGrid";
-import CTASection from "@/pages/home/components/CTASection";
+import CTASection from "@/components/feature/CTASection";
 import Footer from "@/components/feature/Footer";
 
 export default function MediaPage() {

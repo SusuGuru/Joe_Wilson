@@ -8,21 +8,25 @@ import MasterclassSection, { StatsBar } from "./components/MasterclassSection";
 import MomentsSection from "./components/MomentsSection";
 import TestimonialsSection from "./components/TestimonialsSection";
 import ContactPreviewSection from "./components/ContactPreviewSection";
-import CTASection from "./components/CTASection";
+import CTASection from "../../components/feature/CTASection";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <HeroSection />
-      <ListenNowSection />
-      <AboutPreviewSection />
-      <ServicesPreviewSection />
-      <MasterclassSection />
-      <StatsBar />
-      <MomentsSection />
-      <TestimonialsSection />
-      <ContactPreviewSection />
+      <div className="font-inter">
+        <HeroSection />
+        <ListenNowSection />
+        <AboutPreviewSection />
+        <ServicesPreviewSection />
+        <div className="pt-16 md:pt-20">
+          <MasterclassSection />
+          <StatsBar />
+        </div>
+        <MomentsSection />
+        <TestimonialsSection />
+        <ContactPreviewSection />
+      </div>
       <CTASection />
       <Footer />
     </div>

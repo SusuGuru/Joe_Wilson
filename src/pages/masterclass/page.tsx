@@ -8,7 +8,7 @@ import CurriculumSection from "./components/CurriculumSection";
 import EndorsementsSection from "./components/EndorsementsSection";
 import PricingSection from "./components/PricingSection";
 import FAQSection from "./components/FAQSection";
-import CTASection from "@/pages/home/components/CTASection";
+import CTASection from "@/components/feature/CTASection";
 import Footer from "@/components/feature/Footer";
 
 export default function MasterclassPage() {
