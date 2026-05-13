@@ -1,25 +1,26 @@
+import avatar1 from "@/assets/home/testimonialheadshot1.jpg";
+import avatar2 from "@/assets/home/testimonialheadshot2.jpg";
+import avatar3 from "@/assets/home/testimonialheadshot3.jpg";
+
 const endorsements = [
   {
     name: "Marcus Thorne",
     role: "Lead Bass, Greater Faith Choir",
-    avatar:
-      "https://readdy.ai/api/search-image?query=professional%20male%20musician%20portrait%20dark%20background%2C%20confident%20expression%2C%20studio%20lighting%2C%20music%20artist%20headshot%2C%20dark%20tones&width=60&height=60&seq=endorse-1&orientation=squarish",
+    avatar: avatar1,
     quote:
       "The way Elias breaks down chord substitutions changed my entire approach to church services. It's more than bass; it's musicality.",
   },
   {
     name: "David Chen",
     role: "Session Player",
-    avatar:
-      "https://readdy.ai/api/search-image?query=professional%20asian%20male%20musician%20portrait%20dark%20background%2C%20confident%20expression%2C%20studio%20lighting%2C%20music%20artist%20headshot&width=60&height=60&seq=endorse-2&orientation=squarish",
+    avatar: avatar2,
     quote:
       "This is the first course that actually addresses the spirit of the music, not just the scales. Truly high-end education.",
   },
   {
     name: "Sarah Jenkins",
     role: "Independent Artist",
-    avatar:
-      "https://readdy.ai/api/search-image?query=professional%20female%20musician%20portrait%20dark%20background%2C%20confident%20expression%2C%20studio%20lighting%2C%20music%20artist%20headshot%2C%20elegant&width=60&height=60&seq=endorse-3&orientation=squarish",
+    avatar: avatar3,
     quote:
       "From technique to gear knowledge, this masterclass covers it all. The premium feel of the platform makes learning a joy.",
   },
@@ -31,7 +32,7 @@ export default function EndorsementsSection() {
       <div className="max-w-[1120px] mx-auto">
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">
-          <h2 className="font-fraunces text-[26px] md:text-[42px] font-black text-[#1a1a1a] leading-[1.15] italic">
+          <h2 className="font-inter text-[26px] md:text-[42px] font-extrabold text-[#1a1a1a] leading-[1.15]">
             Artist Endorsements
           </h2>
           <p className="text-[#6b7280] text-[13px] md:text-[14px] mt-2 md:mt-3 max-w-[360px] mx-auto leading-[1.7]">
@@ -40,33 +41,37 @@ export default function EndorsementsSection() {
         </div>
 
         {/* Cards — 1 col mobile, 3 col desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {endorsements.map((e, i) => (
-            <div key={i} className="bg-[#f5f7fa] p-5 md:p-7">
-              {/* Quotation mark */}
-              <div
-                className="text-[#2596BE] text-[42px] md:text-[48px] font-black leading-none mb-2 md:mb-3"
-                style={{ fontFamily: "Georgia, serif" }}
-              >
-                &ldquo;
+            <div
+              key={i}
+              className="relative bg-[#EDEEEF] p-8 md:p-10 hover:-translate-y-2 hover:shadow-[0_12px_24px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between mt-6"
+            >
+              {/* Quotation mark / 99 */}
+              <div className="absolute -top-6 -left-2 md:-top-8 md:-left-4 z-10 pointer-events-none">
+                <span className="material-symbols-outlined text-[#077DA7]/30 text-[70px] md:text-[90px] leading-none select-none">
+                  format_quote
+                </span>
               </div>
 
-              <p className="text-[#374151] text-[12px] md:text-[13px] leading-[1.75] mb-5 md:mb-6">
-                {e.quote}
-              </p>
+              <div className="relative z-20">
+                <p className="text-[#1a1a1a] font-inter text-[16px] md:text-[18px] leading-[1.6] mb-8">
+                  "{e.quote}"
+                </p>
+              </div>
 
               {/* Author */}
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 md:w-10 md:h-10 overflow-hidden flex-shrink-0">
+              <div className="flex items-center gap-4 relative z-20">
+                <div className="w-12 h-12 md:w-14 md:h-14 overflow-hidden rounded-xl flex-shrink-0">
                   <img
                     src={e.avatar}
                     alt={e.name}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
                 <div>
-                  <p className="text-[#1a1a1a] text-[12px] md:text-[13px] font-bold leading-tight">{e.name}</p>
-                  <p className="text-[#9ca3af] text-[10px] md:text-[11px] leading-tight">{e.role}</p>
+                  <p className="text-[#1a1a1a] text-[15px] md:text-[17px] font-bold leading-tight mb-1">{e.name}</p>
+                  <p className="text-[#6b7280] text-[13px] md:text-[14px] leading-tight">{e.role}</p>
                 </div>
               </div>
             </div>

@@ -48,7 +48,7 @@ export default function CurriculumSection() {
 
           {/* Left: Curriculum list */}
           <div className="w-full lg:max-w-[400px] flex-shrink-0">
-            <h2 className="font-fraunces text-[24px] md:text-[36px] font-black text-[#1a1a1a] leading-[1.15] mb-2 md:mb-3">
+            <h2 className="font-inter text-[24px] md:text-[36px] font-black text-[#1a1a1a] leading-[1.15] mb-2 md:mb-3">
               The Curriculum
             </h2>
             <p className="text-[#6b7280] text-[12px] md:text-[13px] leading-[1.7] mb-6 md:mb-8">

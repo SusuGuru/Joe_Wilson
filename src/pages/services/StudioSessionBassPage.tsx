@@ -3,154 +3,255 @@ import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import CTASection from "@/components/feature/CTASection";
-import { mediaItems } from "@/mocks/media";
 import RequestAQuoteSection, { OtherServicesSection } from "./components/RequestAQuoteSection";
-
 import studioSessionImg from "@/assets/home/servicesstudio.jpg";
 
+/* ── What's Included ── */
 const opportunities = [
-  { icon: "ri-album-line", title: "Album Sessions", desc: "Record foundational bass tracks for full-length albums across any genre — gospel, R&B, jazz, pop, and beyond." },
-  { icon: "ri-film-line", title: "Film & TV Scoring", desc: "High-quality bass recording for film scores, TV soundtracks, and advertising campaigns with fast turnaround." },
-  { icon: "ri-wifi-line", title: "Remote Recording", desc: "Professional studio-quality recording delivered remotely. Share your files and receive broadcast-ready tracks." },
-  { icon: "ri-advertisement-line", title: "Commercials & Jingles", desc: "Punchy, memorable bass lines for radio and TV commercials that cut through and leave an impression." },
+  {
+    icon: "ri-album-line",
+    title: "Album Recording",
+    desc: "Professional bass tracks for full-length albums and EPs across any genre or style.",
+  },
+  {
+    icon: "ri-film-line",
+    title: "Film & TV Scoring",
+    desc: "Cinematic bass lines for film scores, TV productions, adverts, and sync licensing.",
+  },
+  {
+    icon: "ri-wifi-line",
+    title: "Remote Sessions",
+    desc: "High-quality remote bass recording with fast turnaround and broadcast-ready deliverables.",
+  },
+  {
+    icon: "ri-megaphone-line",
+    title: "Commercial Work",
+    desc: "Punchy, on-brand bass for advertising campaigns, jingles, and brand audio identities.",
+  },
 ];
 
-const process = [
-  { num: "01", icon: "ri-file-music-line", title: "Project Brief", desc: "Share your reference tracks, tempo, key, feel, and any specific stylistic or technical requirements." },
-  { num: "02", icon: "ri-play-circle-line", title: "Demo Pass", desc: "Receive a quick demo take for feedback and direction before the full recording session begins." },
-  { num: "03", icon: "ri-record-circle-line", title: "Full Recording", desc: "Multiple takes recorded with full articulation, dynamics, and professional DI and mic'd options." },
-  { num: "04", icon: "ri-send-plane-line", title: "File Delivery", desc: "Clean, labelled, mixed-ready audio files delivered in your preferred format within the agreed timeframe." },
+/* ── Videos ── */
+const videos = [
+  {
+    id: "v1",
+    title: "Studio Session Highlights",
+    category: "Studio Bass",
+    duration: "3:52",
+    thumb: studioSessionImg,
+    youtubeId: "dQw4w9WgXcQ",
+  },
+  {
+    id: "v2",
+    title: "Remote Recording Walkthrough",
+    category: "Studio Bass",
+    duration: "5:10",
+    thumb: studioSessionImg,
+    youtubeId: "dQw4w9WgXcQ",
+  },
 ];
 
-const displayVideos = mediaItems.filter((m) => m.category === "studio").concat(mediaItems).slice(0, 3);
+/* ── Process Steps ── */
+const steps = [
+  {
+    num: "01",
+    icon: "ri-mail-send-line",
+    title: "Submit Request",
+    desc: "Fill out the quote form with your project details, genre, and preferred delivery timeline.",
+  },
+  {
+    num: "02",
+    icon: "ri-discuss-line",
+    title: "Discuss Requirements",
+    desc: "We'll connect to review reference tracks, chart notes, and any technical recording specs.",
+  },
+  {
+    num: "03",
+    icon: "ri-shake-hands-line",
+    title: "Confirm Booking",
+    desc: "Receive a custom proposal, sign the agreement, and lock in your session date.",
+  },
+  {
+    num: "04",
+    icon: "ri-headphone-line",
+    title: "Deliver Service",
+    desc: "Receive professionally recorded, mixed-ready bass tracks delivered on time, every time.",
+  },
+];
 
 export default function StudioSessionBassPage() {
-  const [playingId, setPlayingId] = useState<string | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const [activeVideo, setActiveVideo] = useState(videos[0]);
 
-  useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth" }); }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
-
-      <Navbar />
-
-      {/* ══ HERO ══════════════════════════════════════════════════════ */}
-      <section className="relative h-[250px] md:h-[350px] w-full">
-        <img src={studioSessionImg} alt="Studio & Session Bass" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center pt-8 text-center px-4">
-          <h1 className="text-[32px] md:text-[48px] font-black text-white uppercase tracking-widest mb-1 md:mb-2">
-            STUDIO & SESSION BASS
+      {/* ── Hero ── */}
+      <div className="relative h-[250px] md:h-[350px] overflow-hidden">
+        <img
+          src={studioSessionImg}
+          alt="Studio & Session Bass"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,20,35,0.65)" }} />
+        <Navbar />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+          <p className="text-[#2596BE] text-[11px] font-bold uppercase tracking-[0.3em] mb-3">Our Services</p>
+          <h1 className="text-3xl md:text-5xl font-black text-white uppercase tracking-widest mb-4">
+            Studio &amp; Session Bass
           </h1>
-          <div className="flex items-center gap-2 text-[10px] md:text-[12px] text-white/80 font-medium tracking-widest flex-wrap justify-center">
-            <Link to="/" className="hover:text-white transition-colors">HOME</Link>
+          <div className="flex items-center gap-2 text-xs text-gray-400 uppercase tracking-widest">
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
             <span>/</span>
-            <Link to="/services" className="hover:text-white transition-colors">SERVICES</Link>
+            <Link to="/services" className="hover:text-white transition-colors">Services</Link>
             <span>/</span>
-            <span className="text-[#2596BE]">STUDIO & SESSION BASS</span>
+            <span className="text-gray-300">Studio &amp; Session Bass</span>
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ══ SESSION OPPORTUNITIES ═════════════════════════════════════ */}
+      {/* ── What's Included ── */}
       <section className="bg-white py-16 px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
-          <p className="text-[#2596BE] text-xs font-bold uppercase tracking-[0.3em] mb-2">Session Uses</p>
-          <h2 className="text-[#111] text-2xl md:text-3xl font-black uppercase tracking-wide mb-10">Session Opportunities</h2>
+          <p className="text-[#2596BE] text-[11px] font-bold uppercase tracking-[0.3em] mb-3">Whats Included</p>
+          <h2
+            className="text-[#111] text-3xl md:text-4xl mb-4 leading-tight"
+            style={{ fontFamily: "'Fraunces', serif" }}
+          >
+            Session<br />Opportunities
+          </h2>
+          <div className="w-10 h-[3px] bg-[#2596BE] mb-10" />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {opportunities.map((o) => (
-              <div key={o.title} className="border border-gray-100 p-6 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-full bg-[#2596BE]/10 flex items-center justify-center mb-4">
-                  <i className={`${o.icon} text-[#2596BE] text-xl`} />
-                </div>
-                <h3 className="text-[#111] text-sm font-black uppercase tracking-wide mb-2">{o.title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{o.desc}</p>
+              <div key={o.title} className="flex flex-col gap-3">
+                <i className={`${o.icon} text-[#2596BE] text-3xl`} />
+                <h3 className="text-[#111] font-black text-sm uppercase tracking-wide">{o.title}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">{o.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ VIDEOS & AUDIOS ═══════════════════════════════════════════ */}
-      <section id="videos" className="bg-[#0d0d0d] py-16 px-6 md:px-16">
+      {/* ── Videos & Audios ── */}
+      <section className="bg-[#0d0d0d] py-16 px-6 md:px-16">
         <div className="max-w-6xl mx-auto">
-          <p className="text-[#2596BE] text-xs font-bold uppercase tracking-[0.3em] mb-2">Watch & Listen</p>
-          <h2 className="text-white text-2xl md:text-3xl font-black uppercase tracking-wide mb-10">Videos & Audios</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-2">
-              <div className="relative aspect-video bg-black overflow-hidden">
-                {playingId === displayVideos[0].id ? (
-                  <iframe className="w-full h-full" src={`https://www.youtube.com/embed/${displayVideos[0].youtubeId}?autoplay=1`} title={displayVideos[0].title} allow="autoplay; encrypted-media" allowFullScreen />
-                ) : (
-                  <>
-                    <img src={displayVideos[0].thumbnail} alt={displayVideos[0].title} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black/40" />
-                    <button onClick={() => setPlayingId(displayVideos[0].id)} className="absolute inset-0 flex items-center justify-center cursor-pointer">
-                      <div className="w-16 h-16 rounded-full bg-[#2596BE] flex items-center justify-center hover:scale-110 transition-transform">
-                        <i className="ri-play-fill text-white text-2xl ml-1" />
-                      </div>
-                    </button>
-                    <span className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-0.5">{displayVideos[0].duration}</span>
-                  </>
-                )}
-              </div>
-              <div className="mt-3">
-                <h3 className="text-white text-sm font-bold">{displayVideos[0].title}</h3>
-                <p className="text-gray-400 text-xs mt-1">{displayVideos[0].date} · {displayVideos[0].views} views</p>
-              </div>
+          <p className="text-[#2596BE] text-[11px] font-bold uppercase tracking-[0.3em] mb-3">Whats Included</p>
+          <h2
+            className="text-white text-3xl md:text-4xl mb-10 leading-tight"
+            style={{ fontFamily: "'Fraunces', serif" }}
+          >
+            Videos &amp; Audios
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
+            {/* Main Player */}
+            <div className="relative w-full overflow-hidden bg-black" style={{ aspectRatio: "16/9" }}>
+              {playing ? (
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube.com/embed/${activeVideo.youtubeId}?autoplay=1`}
+                  title={activeVideo.title}
+                  allow="autoplay; encrypted-media"
+                  allowFullScreen
+                />
+              ) : (
+                <>
+                  <img
+                    src={activeVideo.thumb}
+                    alt={activeVideo.title}
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-black/40" />
+                  <button
+                    onClick={() => setPlaying(true)}
+                    className="absolute inset-0 flex items-center justify-center group cursor-pointer"
+                  >
+                    <div className="w-16 h-16 flex items-center justify-center bg-[#2596BE] rounded-full group-hover:scale-110 transition-transform">
+                      <i className="ri-play-fill text-white text-3xl ml-1" />
+                    </div>
+                  </button>
+                </>
+              )}
             </div>
-            <div className="flex flex-col gap-4">
-              {displayVideos.slice(1).map((v) => (
-                <div key={v.id} className="flex gap-3 group cursor-pointer" onClick={() => setPlayingId(v.id)}>
-                  <div className="relative w-32 h-20 flex-shrink-0 overflow-hidden bg-black">
-                    <img src={v.thumbnail} alt={v.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                      <div className="w-7 h-7 rounded-full bg-[#2596BE]/80 flex items-center justify-center">
-                        <i className="ri-play-fill text-white text-xs ml-0.5" />
+
+            {/* Sidebar */}
+            <div>
+              <p className="text-gray-300 text-sm leading-relaxed mb-6">
+                Check out highlights from past studio sessions and recordings
+              </p>
+              <div className="flex flex-col gap-4">
+                {videos.map((v) => (
+                  <div
+                    key={v.id}
+                    onClick={() => { setActiveVideo(v); setPlaying(false); }}
+                    className="flex gap-3 group cursor-pointer"
+                  >
+                    <div className="relative w-28 h-[70px] flex-shrink-0 overflow-hidden bg-black">
+                      <img
+                        src={v.thumb}
+                        alt={v.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <div className="w-7 h-7 flex items-center justify-center bg-[#2596BE]/80 rounded-full">
+                          <i className="ri-play-fill text-white text-xs ml-0.5" />
+                        </div>
                       </div>
                     </div>
-                    <span className="absolute bottom-1 right-1 bg-black/70 text-white text-[10px] px-1">{v.duration}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[#2596BE] text-[10px] font-bold uppercase tracking-wider">{v.category}</p>
+                      <p className="text-gray-200 text-xs font-bold leading-snug mt-0.5 group-hover:text-[#2596BE] transition-colors line-clamp-2">
+                        {v.title}
+                      </p>
+                      <p className="text-gray-500 text-xs mt-1">{v.duration}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-gray-200 text-xs font-bold leading-snug group-hover:text-[#2596BE] transition-colors line-clamp-2">{v.title}</h4>
-                    <p className="text-gray-500 text-[10px] mt-1">{v.date}</p>
-                  </div>
-                </div>
-              ))}
-              <Link to="/media" className="mt-auto text-[#2596BE] text-xs font-bold hover:underline inline-flex items-center gap-1">
-                View All Media <i className="ri-arrow-right-line" />
-              </Link>
+                ))}
+              </div>
             </div>
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Link
+              to="/media"
+              className="inline-block border border-white text-white text-[11px] font-bold uppercase tracking-[0.2em] px-10 py-3 hover:bg-white hover:text-[#0d0d0d] transition-colors"
+            >
+              VIDEOS
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ══ HOW IT WORKS ══════════════════════════════════════════════ */}
+      {/* ── How It Works ── */}
       <section className="bg-white py-16 px-6 md:px-16">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-[#2596BE] text-xs font-bold uppercase tracking-[0.3em] mb-2">Process</p>
-          <h2 className="text-[#111] text-2xl md:text-3xl font-black uppercase tracking-wide mb-12">How It Works</h2>
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[#2596BE] text-[11px] font-bold uppercase tracking-[0.3em] mb-3">Process</p>
+          <h2
+            className="text-[#111] text-3xl md:text-4xl mb-10 leading-tight"
+            style={{ fontFamily: "'Fraunces', serif" }}
+          >
+            How It Works
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {process.map((step) => (
-              <div key={step.num}>
-                <p className="text-gray-200 text-5xl font-black mb-3">{step.num}</p>
-                <div className="w-10 h-10 rounded-full border border-[#2596BE] flex items-center justify-center mb-3">
-                  <i className={`${step.icon} text-[#2596BE] text-base`} />
+            {steps.map((s) => (
+              <div key={s.num} className="flex flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  <span className="text-[#ccc] text-2xl font-black leading-none">{s.num}</span>
+                  <i className={`${s.icon} text-[#2596BE] text-xl`} />
                 </div>
-                <h3 className="text-[#111] text-sm font-black uppercase tracking-wide mb-2">{step.title}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed">{step.desc}</p>
+                <h3 className="text-[#111] font-black text-sm uppercase tracking-wide">{s.title}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══ REQUEST A QUOTE ═══════════════════════════════════════════ */}
       <RequestAQuoteSection currentServiceId="studio-session-bass" />
-
-      {/* ══ OTHER SERVICES ════════════════════════════════════════════ */}
       <OtherServicesSection currentServiceId="studio-session-bass" />
-
       <CTASection />
       <Footer />
     </div>

@@ -30,12 +30,12 @@ export default function Navbar({ light = false }: NavbarProps) {
   const navBg = light
     ? "bg-white shadow-sm"
     : scrolled
-    ? "bg-black/90 backdrop-blur-sm"
-    : "bg-transparent";
+      ? "bg-black/90 backdrop-blur-sm"
+      : "bg-transparent";
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
-        <div className="px-6 py-3 flex items-center justify-between">
+      <div className="px-6 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-1 cursor-pointer">
           <img
@@ -55,13 +55,12 @@ export default function Navbar({ light = false }: NavbarProps) {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-medium transition-colors whitespace-nowrap cursor-pointer ${
-                location.pathname === link.path
+              className={`text-sm font-medium transition-colors whitespace-nowrap cursor-pointer ${location.pathname === link.path
                   ? "text-[#077DA7] border border-[#077DA7] px-2 py-0.5"
                   : light
-                  ? "text-gray-700 hover:text-gray-900"
-                  : "text-gray-300 hover:text-white"
-              }`}
+                    ? "text-gray-700 hover:text-gray-900"
+                    : "text-gray-300 hover:text-white"
+                }`}
             >
               {link.label}
             </Link>
@@ -75,11 +74,11 @@ export default function Navbar({ light = false }: NavbarProps) {
           </Link>
           <Link
             to="/contact"
-          className="bg-[#077DA7] text-white text-xs font-bold px-4 py-2 rounded uppercase tracking-wider hover:bg-[#05637f] transition-colors whitespace-nowrap cursor-pointer"
-            >
-              Book Me
-            </Link>
-          </div>
+            className="bg-[#077DA7] text-white text-xs font-bold px-4 py-2 rounded uppercase tracking-wider hover:bg-[#05637f] transition-colors whitespace-nowrap cursor-pointer"
+          >
+            Book Me
+          </Link>
+        </div>
 
         {/* Mobile Hamburger */}
         <button
@@ -111,14 +110,13 @@ export default function Navbar({ light = false }: NavbarProps) {
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileOpen(false)}
-                className={`text-[17px] font-medium cursor-pointer ${
-                  location.pathname === link.path ? "text-[#077DA7]" : "text-white hover:text-gray-300"
-                }`}
+                className={`text-[17px] font-medium cursor-pointer ${location.pathname === link.path ? "text-[#077DA7]" : "text-white hover:text-gray-300"
+                  }`}
               >
                 {link.label}
               </Link>
             ))}
-            
+
             <div className="mt-4 pb-12">
               <Link
                 to="/contact"

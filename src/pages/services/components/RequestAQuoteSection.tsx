@@ -71,7 +71,10 @@ export default function RequestAQuoteSection({ currentServiceId }: RequestAQuote
         {/* Left — label + title + description */}
         <div>
           <p className="text-[#2596BE] text-[11px] font-bold uppercase tracking-[0.3em] mb-3">Request</p>
-          <h2 className="text-[#111] text-3xl md:text-4xl font-black leading-tight mb-4">
+          <h2 
+            className="text-[#111] text-4xl md:text-5xl mb-4 leading-tight"
+            style={{ fontFamily: "'Fraunces', serif" }}
+          >
             Request A<br />Quote
           </h2>
           <div className="w-10 h-[3px] bg-[#2596BE] mb-6" />
@@ -92,7 +95,7 @@ export default function RequestAQuoteSection({ currentServiceId }: RequestAQuote
             {/* Row 1: Full Name | Email Address */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-6">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-2">Full Name</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[#111] mb-2">Full Name</label>
                 <input
                   required
                   value={form.fullName}
@@ -102,7 +105,7 @@ export default function RequestAQuoteSection({ currentServiceId }: RequestAQuote
                 />
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-2">Email Address</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[#111] mb-2">Email Address</label>
                 <input
                   required
                   type="email"
@@ -117,7 +120,7 @@ export default function RequestAQuoteSection({ currentServiceId }: RequestAQuote
             {/* Row 2: Service | Event Date */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-6">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-2">Service</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[#111] mb-2">Service</label>
                 <div className="relative">
                   <select
                     value={form.service}
@@ -132,7 +135,7 @@ export default function RequestAQuoteSection({ currentServiceId }: RequestAQuote
                 </div>
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-2">Event Date</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[#111] mb-2">Event Date</label>
                 <input
                   type="date"
                   value={form.eventDate}
@@ -145,7 +148,7 @@ export default function RequestAQuoteSection({ currentServiceId }: RequestAQuote
             {/* Row 3: Event Type | Budget Range */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 mb-6">
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-2">Event Type</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[#111] mb-2">Event Type</label>
                 <div className="relative">
                   <select
                     value={form.eventType}
@@ -159,7 +162,7 @@ export default function RequestAQuoteSection({ currentServiceId }: RequestAQuote
                 </div>
               </div>
               <div>
-                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-2">Budget Range</label>
+                <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[#111] mb-2">Budget Range</label>
                 <input
                   value={form.budgetRange}
                   onChange={e => setForm(f => ({ ...f, budgetRange: e.target.value }))}
@@ -175,7 +178,7 @@ export default function RequestAQuoteSection({ currentServiceId }: RequestAQuote
 
             {/* Row 4: Notes — full width */}
             <div className="mb-8">
-              <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-gray-500 mb-2">Notes</label>
+              <label className="block text-[11px] font-bold uppercase tracking-[0.15em] text-[#111] mb-2">Notes</label>
               <textarea
                 rows={3}
                 value={form.notes}

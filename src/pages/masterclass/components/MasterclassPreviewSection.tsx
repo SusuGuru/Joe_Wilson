@@ -8,7 +8,7 @@ export default function MasterclassPreviewSection() {
       <div className="max-w-[960px] mx-auto">
         {/* Header */}
         <div className="text-center mb-7 md:mb-10">
-          <h2 className="font-fraunces text-[24px] md:text-[42px] font-black text-[#1a1a1a] leading-[1.15] italic">
+          <h2 className="font-inter text-[24px] md:text-[42px] font-bold text-[#1a1a1a] leading-[1.15]">
             Masterclass Preview
           </h2>
           <p className="text-[#6b7280] text-[13px] md:text-[14px] mt-2 md:mt-3 max-w-[480px] mx-auto leading-[1.7]">

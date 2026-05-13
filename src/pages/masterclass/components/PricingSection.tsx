@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const includes = [
   { label: "Full Lifetime Access" },
   { label: "Private Community Access" },
@@ -20,7 +22,7 @@ export default function PricingSection() {
           </p>
 
           {/* Title */}
-          <h2 className="text-center font-fraunces text-[22px] md:text-[36px] font-black text-[#1a1a1a] leading-[1.1] mb-4 md:mb-6">
+          <h2 className="text-center font-inter text-[22px] md:text-[36px] font-extrabold text-[#1a1a1a] leading-[1.1] mb-4 md:mb-6">
             Complete Mastery Suite
           </h2>
 
@@ -41,9 +43,9 @@ export default function PricingSection() {
           </div>
 
           {/* CTA Button */}
-          <button className="w-full bg-[#2596BE] text-white text-[13px] md:text-[14px] font-bold py-3.5 md:py-4 uppercase hover:bg-[#1e7fa3] transition-colors duration-200 cursor-pointer tracking-wide">
+          <Link to="/checkout" className="block text-center w-full bg-[#2596BE] text-white text-[13px] md:text-[14px] font-bold py-3.5 md:py-4 uppercase hover:bg-[#1e7fa3] transition-colors duration-200 cursor-pointer tracking-wide">
             Secure Your Spot Today
-          </button>
+          </Link>
 
           {/* Guarantee */}
           <p className="text-center text-[#9ca3af] text-[11px] md:text-[12px] mt-3 md:mt-4">

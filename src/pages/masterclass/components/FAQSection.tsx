@@ -36,7 +36,7 @@ export default function FAQSection() {
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">
           <h2
-            className="font-inter text-[18px] md:text-[30px] font-black text-[#1a1a1a] uppercase"
+            className="font-inter text-[18px] md:text-[30px] font-bold text-[#1a1a1a] uppercase"
             style={{ letterSpacing: "0.08em" }}
           >
             Frequently Asked Questions

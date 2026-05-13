@@ -22,7 +22,7 @@ export default function PathToMasterySection() {
       <div className="max-w-[900px] mx-auto">
         {/* Header */}
         <div className="text-center mb-10 md:mb-14">
-          <h2 className="font-fraunces text-[24px] md:text-[36px] font-black text-[#1a1a1a] leading-[1.2]">
+          <h2 className="font-inter text-[24px] md:text-[36px] font-bold text-[#1a1a1a] leading-[1.2]">
             The Path to Mastery
           </h2>
         </div>
@@ -30,10 +30,7 @@ export default function PathToMasterySection() {
         {/* Steps — vertical on mobile, horizontal on desktop */}
         <div className="relative">
           {/* Horizontal connector line — desktop only */}
-          <div
-            className="hidden md:block absolute top-[22px] h-[2px] bg-[#e5e7eb]"
-            style={{ left: "16%", right: "16%" }}
-          />
+          <div className="hidden md:block absolute top-[28px] left-0 right-0 w-full h-[1px] bg-[#e5e7eb] z-0" />
 
           <div className="flex flex-col md:grid md:grid-cols-3 gap-8 md:gap-8">
             {steps.map((step, index) => (
@@ -41,12 +38,12 @@ export default function PathToMasterySection() {
 
                 {/* Mobile: vertical connector line between steps */}
                 {index < steps.length - 1 && (
-                  <div className="md:hidden absolute left-[22px] top-[44px] w-[2px] h-[calc(100%+2rem)] bg-[#e5e7eb]" />
+                  <div className="md:hidden absolute left-[28px] top-[56px] w-[1px] h-[calc(100%+1.5rem)] bg-[#e5e7eb] z-0" />
                 )}
 
                 {/* Number square */}
-                <div className="w-[44px] h-[44px] flex-shrink-0 flex items-center justify-center bg-[#2596BE] md:mb-5 relative z-10">
-                  <span className="text-white text-[18px] font-bold">{step.number}</span>
+                <div className={`w-[56px] h-[56px] flex-shrink-0 flex items-center justify-center ${index === 0 ? "bg-[#077DA7]" : "bg-[#353534]"} md:mb-5 relative z-10`}>
+                  <span className="text-white text-[22px] font-bold">{step.number}</span>
                 </div>
 
                 <div className="pb-2 md:pb-0">

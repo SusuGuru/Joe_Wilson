@@ -1,5 +1,6 @@
 import type { RouteObject } from "react-router-dom";
 import NotFound from "../pages/NotFound";
+import CheckoutPage from "../pages/checkout/page";
 import Home from "../pages/home/page";
 import Login from "../pages/auth/login";
 import Signup from "../pages/auth/signup";
@@ -52,6 +53,10 @@ const routes: RouteObject[] = [
   {
     path: "/masterclass",
     element: <MasterclassPage />,
+  },
+  {
+    path: "/checkout",
+    element: <CheckoutPage />,
   },
   {
     path: "/members",
