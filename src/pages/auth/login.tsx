@@ -47,9 +47,9 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen w-full">
+    <div className="flex min-h-screen w-full">
       {/* Left Panel */}
-      <div className="w-1/2 flex flex-col justify-center px-16 bg-white">
+      <div className="w-full md:w-1/2 flex flex-col justify-center px-6 sm:px-10 md:px-16 py-12 bg-white overflow-y-auto">
         <div className="max-w-sm w-full mx-auto">
           <h1 className="text-3xl font-bold text-gray-900 mb-3">Welcome Back</h1>
           <p className="text-gray-500 text-sm mb-8 leading-relaxed">
@@ -138,7 +138,7 @@ export default function Login() {
       </div>
 
       {/* Right Panel */}
-      <div className="w-1/2 relative overflow-hidden">
+      <div className="hidden md:block md:w-1/2 relative overflow-hidden">
         <img
           src={loginBg}
           alt="Joseph Wilson"
